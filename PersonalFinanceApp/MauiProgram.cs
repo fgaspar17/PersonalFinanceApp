@@ -1,4 +1,6 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
+using PersonalFinanceApp.Data;
 
 namespace PersonalFinanceApp
 {
@@ -7,6 +9,7 @@ namespace PersonalFinanceApp
         public static MauiApp CreateMauiApp()
         {
             var builder = MauiApp.CreateBuilder();
+
             builder
                 .UseMauiApp<App>()
                 .ConfigureFonts(fonts =>
@@ -16,8 +19,13 @@ namespace PersonalFinanceApp
 
             builder.Services.AddMauiBlazorWebView();
 
+            builder.Services.AddDbContext<PersonalFinanceAppContext>(options =>
+            {
+                options.UseSqlite("Data Source=personalfinanceapp.db");
+            });
+
 #if DEBUG
-    		builder.Services.AddBlazorWebViewDeveloperTools();
+            builder.Services.AddBlazorWebViewDeveloperTools();
     		builder.Logging.AddDebug();
 #endif
 
