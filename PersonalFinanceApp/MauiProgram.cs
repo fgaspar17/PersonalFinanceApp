@@ -23,7 +23,6 @@ namespace PersonalFinanceApp
             {
                 options.UseSqlite("Data Source=personalfinanceapp.db");
             });
-
 #if DEBUG
             builder.Services.AddBlazorWebViewDeveloperTools();
     		builder.Logging.AddDebug();
