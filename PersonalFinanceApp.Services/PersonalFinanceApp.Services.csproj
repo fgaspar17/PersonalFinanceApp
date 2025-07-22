@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\PersonalFinanceApp.Data\PersonalFinanceApp.Data.csproj" />
+  </ItemGroup>
+
 </Project>

@@ -1,4 +1,5 @@
 ﻿@page "/"
+@inject IPaymentMethodService PaymentMethodService
 
 <table class="table">
     <thead>
@@ -7,6 +8,7 @@
             <th>Name</th>
             <th>Created At</th>
             <th>Updated At</th>
+            <th><button>Create</button></th>
         </tr>
     </thead>
     <tbody>
@@ -17,37 +19,25 @@
                 <td>@method.Name</td>
                 <td>@method.CreatedAt.ToString("yyyy-MM-dd")</td>
                 <td>@(method.UpdatedAt.HasValue ? method.UpdatedAt.Value.ToString("yyyy-MM-dd") : "N/A")</td>
+                <td><button id="@method.PaymentMethodId">Update</button> <button id="@method.PaymentMethodId">Delete</button></td>
             </tr>
         }
 	</tbody>
 </table>
 
 @code {
-    private List<PaymentMethod> paymentMethods = new()
+    private List<PaymentMethodDto> paymentMethods = new();
+	private CancellationTokenSource? _cts;
+
+    protected override async Task OnInitializedAsync()
     {
-        new PaymentMethod
-        {
-            PaymentMethodId = 1,
-            Name = "Cash",
-            CreatedAt = DateTime.Now.AddDays(-30),
-            UpdatedAt = null,
-            IsActive = true
-        },
-        new PaymentMethod
-        {
-            PaymentMethodId = 2,
-            Name = "Bizum",
-            CreatedAt = DateTime.Now.AddDays(-15),
-            UpdatedAt = DateTime.Now.AddDays(-2),
-            IsActive = true
-        },
-        new PaymentMethod
-        {
-            PaymentMethodId = 3,
-            Name = "Bank Transfer",
-            CreatedAt = DateTime.Now.AddDays(-60),
-            UpdatedAt = DateTime.Now.AddDays(-10),
-            IsActive = true
-        }
-    };
+		_cts = new CancellationTokenSource();
+        paymentMethods = await PaymentMethodService.GetAllPaymentMethodsAsync(_cts.Token);
+	}
+
+    public void Dispose()
+    {
+        _cts?.Cancel();
+        _cts?.Dispose();
+	}
 }

@@ -5,7 +5,7 @@ using PersonalFinanceApp.Services.Mappers;
 
 namespace PersonalFinanceApp.Services.Services;
 
-public class PaymentMethodService
+public class PaymentMethodService : IPaymentMethodService
 {
     private readonly PersonalFinanceAppContext _context;
 
@@ -39,6 +39,7 @@ public class PaymentMethodService
         var paymentMethod = PaymentMethodMapper.MapToDomain(paymentMethodDto);
         paymentMethod.CreatedAt = DateTime.UtcNow;
         paymentMethod.UpdatedAt = null;
+        paymentMethod.IsActive = true;
         _context.PaymentMethods.Add(paymentMethod);
         await _context.SaveChangesAsync(ct);
         return PaymentMethodMapper.MapToDto(paymentMethod);
@@ -67,7 +68,8 @@ public class PaymentMethodService
         {
             return false;
         }
-        _context.PaymentMethods.Remove(paymentMethod);
+        paymentMethod.IsActive = false;
+        _context.PaymentMethods.Update(paymentMethod);
         await _context.SaveChangesAsync(ct);
         return true;
     }
