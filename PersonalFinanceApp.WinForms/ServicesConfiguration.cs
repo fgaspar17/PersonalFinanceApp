@@ -15,6 +15,6 @@ internal class ServicesConfiguration
         });
 
         services.AddScoped<IPaymentMethodService, PaymentMethodService>();
-        services.AddScoped<Form1>();
+        services.AddScoped<PaymentMethodForm>();
     }
 }
