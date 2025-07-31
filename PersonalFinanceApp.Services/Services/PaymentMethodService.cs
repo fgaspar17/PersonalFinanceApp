@@ -68,6 +68,7 @@ public class PaymentMethodService : IPaymentMethodService
         {
             return false;
         }
+        paymentMethod.UpdatedAt = DateTime.UtcNow;
         paymentMethod.IsActive = false;
         _context.PaymentMethods.Update(paymentMethod);
         await _context.SaveChangesAsync(ct);

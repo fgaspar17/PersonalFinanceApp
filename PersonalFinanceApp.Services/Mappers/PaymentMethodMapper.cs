@@ -11,8 +11,6 @@ internal class PaymentMethodMapper
         {
             PaymentMethodId = dto.PaymentMethodId,
             Name = dto.Name,
-            CreatedAt = dto.CreatedAt,
-            UpdatedAt = dto.UpdatedAt
         };
     }
     public static PaymentMethodDto MapToDto(PaymentMethod domain)
@@ -21,8 +19,6 @@ internal class PaymentMethodMapper
         {
             PaymentMethodId = domain.PaymentMethodId,
             Name = domain.Name,
-            CreatedAt = domain.CreatedAt,
-            UpdatedAt = domain.UpdatedAt
         };
     }
 }

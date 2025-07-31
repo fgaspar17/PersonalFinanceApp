@@ -7,19 +7,6 @@
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary>
-        ///  Clean up any resources being used.
-        /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing && (components != null))
-            {
-                components.Dispose();
-            }
-            base.Dispose(disposing);
-        }
-
         #region Windows Form Designer generated code
 
         /// <summary>
@@ -32,13 +19,13 @@
             dataGridViewPaymentMethods = new DataGridView();
             paymentMethodIdDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             nameDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            createdAtDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            updatedAtDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             paymentMethodDtoBindingSource = new BindingSource(components);
             panel1 = new Panel();
-            paymentMethodCreateButton = new Button();
-            paymentMethodNameTextBox = new TextBox();
+            paymentMethodUpdateButton = new Button();
             paymentMethodNameLabel = new Label();
+            paymentMethodNameTextBox = new TextBox();
+            paymentMethodCreateButton = new Button();
+            paymentMethodDeleteButton = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridViewPaymentMethods).BeginInit();
             ((System.ComponentModel.ISupportInitialize)paymentMethodDtoBindingSource).BeginInit();
             panel1.SuspendLayout();
@@ -51,7 +38,7 @@
             dataGridViewPaymentMethods.AllowUserToOrderColumns = true;
             dataGridViewPaymentMethods.AutoGenerateColumns = false;
             dataGridViewPaymentMethods.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewPaymentMethods.Columns.AddRange(new DataGridViewColumn[] { paymentMethodIdDataGridViewTextBoxColumn, nameDataGridViewTextBoxColumn, createdAtDataGridViewTextBoxColumn, updatedAtDataGridViewTextBoxColumn });
+            dataGridViewPaymentMethods.Columns.AddRange(new DataGridViewColumn[] { paymentMethodIdDataGridViewTextBoxColumn, nameDataGridViewTextBoxColumn });
             dataGridViewPaymentMethods.DataSource = paymentMethodDtoBindingSource;
             dataGridViewPaymentMethods.Dock = DockStyle.Fill;
             dataGridViewPaymentMethods.Location = new Point(0, 42);
@@ -77,28 +64,14 @@
             nameDataGridViewTextBoxColumn.ReadOnly = true;
             nameDataGridViewTextBoxColumn.Width = 200;
             // 
-            // createdAtDataGridViewTextBoxColumn
-            // 
-            createdAtDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            createdAtDataGridViewTextBoxColumn.DataPropertyName = "CreatedAt";
-            createdAtDataGridViewTextBoxColumn.HeaderText = "CreatedAt";
-            createdAtDataGridViewTextBoxColumn.Name = "createdAtDataGridViewTextBoxColumn";
-            createdAtDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // updatedAtDataGridViewTextBoxColumn
-            // 
-            updatedAtDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            updatedAtDataGridViewTextBoxColumn.DataPropertyName = "UpdatedAt";
-            updatedAtDataGridViewTextBoxColumn.HeaderText = "UpdatedAt";
-            updatedAtDataGridViewTextBoxColumn.Name = "updatedAtDataGridViewTextBoxColumn";
-            updatedAtDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
             // paymentMethodDtoBindingSource
             // 
             paymentMethodDtoBindingSource.DataSource = typeof(Services.DTOs.PaymentMethodDto);
             // 
             // panel1
             // 
+            panel1.Controls.Add(paymentMethodDeleteButton);
+            panel1.Controls.Add(paymentMethodUpdateButton);
             panel1.Controls.Add(paymentMethodNameLabel);
             panel1.Controls.Add(paymentMethodNameTextBox);
             panel1.Controls.Add(paymentMethodCreateButton);
@@ -108,22 +81,15 @@
             panel1.Size = new Size(800, 42);
             panel1.TabIndex = 1;
             // 
-            // paymentMethodCreateButton
+            // paymentMethodUpdateButton
             // 
-            paymentMethodCreateButton.Location = new Point(713, 12);
-            paymentMethodCreateButton.Name = "paymentMethodCreateButton";
-            paymentMethodCreateButton.Size = new Size(75, 23);
-            paymentMethodCreateButton.TabIndex = 0;
-            paymentMethodCreateButton.Text = "Crear";
-            paymentMethodCreateButton.UseVisualStyleBackColor = true;
-            paymentMethodCreateButton.Click += paymentMethodCreateButton_Click;
-            // 
-            // paymentMethodNameTextBox
-            // 
-            paymentMethodNameTextBox.Location = new Point(120, 12);
-            paymentMethodNameTextBox.Name = "paymentMethodNameTextBox";
-            paymentMethodNameTextBox.Size = new Size(220, 23);
-            paymentMethodNameTextBox.TabIndex = 1;
+            paymentMethodUpdateButton.Location = new Point(551, 11);
+            paymentMethodUpdateButton.Name = "paymentMethodUpdateButton";
+            paymentMethodUpdateButton.Size = new Size(75, 23);
+            paymentMethodUpdateButton.TabIndex = 3;
+            paymentMethodUpdateButton.Text = "Update";
+            paymentMethodUpdateButton.UseVisualStyleBackColor = true;
+            paymentMethodUpdateButton.Click += paymentMethodUpdateButton_Click;
             // 
             // paymentMethodNameLabel
             // 
@@ -133,6 +99,33 @@
             paymentMethodNameLabel.Size = new Size(102, 15);
             paymentMethodNameLabel.TabIndex = 2;
             paymentMethodNameLabel.Text = "Payment Method:";
+            // 
+            // paymentMethodNameTextBox
+            // 
+            paymentMethodNameTextBox.Location = new Point(120, 12);
+            paymentMethodNameTextBox.Name = "paymentMethodNameTextBox";
+            paymentMethodNameTextBox.Size = new Size(220, 23);
+            paymentMethodNameTextBox.TabIndex = 1;
+            // 
+            // paymentMethodCreateButton
+            // 
+            paymentMethodCreateButton.Location = new Point(632, 11);
+            paymentMethodCreateButton.Name = "paymentMethodCreateButton";
+            paymentMethodCreateButton.Size = new Size(75, 23);
+            paymentMethodCreateButton.TabIndex = 0;
+            paymentMethodCreateButton.Text = "Create";
+            paymentMethodCreateButton.UseVisualStyleBackColor = true;
+            paymentMethodCreateButton.Click += paymentMethodCreateButton_Click;
+            // 
+            // paymentMethodDeleteButton
+            // 
+            paymentMethodDeleteButton.Location = new Point(713, 11);
+            paymentMethodDeleteButton.Name = "paymentMethodDeleteButton";
+            paymentMethodDeleteButton.Size = new Size(75, 23);
+            paymentMethodDeleteButton.TabIndex = 4;
+            paymentMethodDeleteButton.Text = "Delete";
+            paymentMethodDeleteButton.UseVisualStyleBackColor = true;
+            paymentMethodDeleteButton.Click += paymentMethodDeleteButton_Click;
             // 
             // PaymentMethodForm
             // 
@@ -154,14 +147,14 @@
         #endregion
 
         private DataGridView dataGridViewPaymentMethods;
-        private DataGridViewTextBoxColumn paymentMethodIdDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn createdAtDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn updatedAtDataGridViewTextBoxColumn;
         private BindingSource paymentMethodDtoBindingSource;
         private Panel panel1;
         private Label paymentMethodNameLabel;
         private TextBox paymentMethodNameTextBox;
         private Button paymentMethodCreateButton;
+        private Button paymentMethodUpdateButton;
+        private DataGridViewTextBoxColumn paymentMethodIdDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
+        private Button paymentMethodDeleteButton;
     }
 }
