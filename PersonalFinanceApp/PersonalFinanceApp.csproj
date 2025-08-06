@@ -68,6 +68,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\PersonalFinanceApp.Data\PersonalFinanceApp.Data.csproj" />
+      <ProjectReference Include="..\PersonalFinanceApp.Services\PersonalFinanceApp.Services.csproj" />
     </ItemGroup>
 
     <ItemGroup>

@@ -7,8 +7,8 @@ public class PaymentMethod
 {
     public int PaymentMethodId { get; set; }
     public required string Name { get; set; }
-    public DateTime CreatedAt { get; set; }
-    public DateTime? UpdatedAt { get; set; }
-    public bool IsActive { get; set; }
+    public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+    public DateTime? ModifiedAt { get; set; }
+    public bool IsActive { get; set; } = true;
     public ICollection<MoneyMovement> MoneyMovements { get; set; } = new List<MoneyMovement>();
 }

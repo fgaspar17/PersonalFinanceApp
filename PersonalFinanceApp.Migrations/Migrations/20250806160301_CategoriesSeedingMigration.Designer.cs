@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PersonalFinanceApp.Data;
 
@@ -10,9 +11,11 @@ using PersonalFinanceApp.Data;
 namespace PersonalFinanceApp.Migrations.Migrations
 {
     [DbContext(typeof(PersonalFinanceAppContext))]
-    partial class PersonalFinanceAppContextModelSnapshot : ModelSnapshot
+    [Migration("20250806160301_CategoriesSeedingMigration")]
+    partial class CategoriesSeedingMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "9.0.7");

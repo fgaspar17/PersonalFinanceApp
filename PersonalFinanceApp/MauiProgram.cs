@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using PersonalFinanceApp.Data;
+using PersonalFinanceApp.Services.Services;
 
 namespace PersonalFinanceApp
 {
@@ -21,9 +22,10 @@ namespace PersonalFinanceApp
 
             builder.Services.AddDbContext<PersonalFinanceAppContext>(options =>
             {
-                options.UseSqlite("Data Source=personalfinanceapp.db");
+                options.UseSqlite("Data Source=personalfinance.db");
             });
 
+            builder.Services.AddScoped<IPaymentMethodService, PaymentMethodService>();
 #if DEBUG
             builder.Services.AddBlazorWebViewDeveloperTools();
     		builder.Logging.AddDebug();

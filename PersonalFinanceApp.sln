@@ -9,6 +9,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersonalFinanceApp.Data", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersonalFinanceApp.Migrations", "PersonalFinanceApp.Migrations\PersonalFinanceApp.Migrations.csproj", "{52ECEAD1-FC0A-46AD-8185-9633BBF67FA1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersonalFinanceApp.Services", "PersonalFinanceApp.Services\PersonalFinanceApp.Services.csproj", "{49671A50-A89D-4AD9-A987-EB81EFD29C65}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersonalFinanceApp.WinForms", "PersonalFinanceApp.WinForms\PersonalFinanceApp.WinForms.csproj", "{A4DCACD8-BC93-4E19-B5D0-09A25125DE02}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +31,14 @@ Global
 		{52ECEAD1-FC0A-46AD-8185-9633BBF67FA1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{52ECEAD1-FC0A-46AD-8185-9633BBF67FA1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{52ECEAD1-FC0A-46AD-8185-9633BBF67FA1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{49671A50-A89D-4AD9-A987-EB81EFD29C65}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{49671A50-A89D-4AD9-A987-EB81EFD29C65}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{49671A50-A89D-4AD9-A987-EB81EFD29C65}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{49671A50-A89D-4AD9-A987-EB81EFD29C65}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A4DCACD8-BC93-4E19-B5D0-09A25125DE02}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A4DCACD8-BC93-4E19-B5D0-09A25125DE02}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A4DCACD8-BC93-4E19-B5D0-09A25125DE02}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A4DCACD8-BC93-4E19-B5D0-09A25125DE02}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
