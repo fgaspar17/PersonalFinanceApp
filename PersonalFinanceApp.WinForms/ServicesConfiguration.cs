@@ -18,7 +18,12 @@ internal class ServicesConfiguration
         });
 
         services.AddScoped<IValidator<PaymentMethodDto>, PaymentMethodValidator>();
+        services.AddScoped<IValidator<CategoryDto>, CategoryValidator>();
+
         services.AddScoped<IPaymentMethodService, PaymentMethodService>();
+        services.AddScoped<ICategoryService, CategoryService>();
+
         services.AddScoped<PaymentMethodForm>();
+        services.AddScoped<CategoryForm>();
     }
 }

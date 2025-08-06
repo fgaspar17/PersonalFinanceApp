@@ -18,7 +18,7 @@ internal static class Program
 
         using (var serviceProvider = services.BuildServiceProvider())
         {
-            var form = serviceProvider.GetService<PaymentMethodForm>()!;
+            var form = serviceProvider.GetService<CategoryForm>()!;
             Application.Run(form);
         }
     }

@@ -1,9 +1,9 @@
 ﻿using FluentValidation;
-using PersonalFinanceApp.Data.Models;
+using PersonalFinanceApp.Services.DTOs;
 
 namespace PersonalFinanceApp.Services.Validators;
 
-public class CategoryValidator : AbstractValidator<Category>
+public class CategoryValidator : AbstractValidator<CategoryDto>
 {
     public CategoryValidator()
     {

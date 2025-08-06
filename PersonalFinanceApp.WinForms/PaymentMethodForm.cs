@@ -22,6 +22,17 @@ public partial class PaymentMethodForm : Form
         await LoadPaymentMethods();
     }
 
+    private void SetupBindings()
+    {
+        this.paymentMethodNameTextBox.DataBindings.Add("Text", paymentMethodDtoBindingSource, "Name", true, DataSourceUpdateMode.Never);
+    }
+
+    private async Task LoadPaymentMethods()
+    {
+        List<PaymentMethodDto> paymentMethodDtos = await _service.GetAllPaymentMethodsAsync(_cts.Token);
+        paymentMethodDtoBindingSource.DataSource = paymentMethodDtos;
+    }
+
     private async void paymentMethodCreateButton_Click(object sender, EventArgs e)
     {
         PaymentMethodDto newPaymentMethod = new PaymentMethodDto
@@ -31,11 +42,6 @@ public partial class PaymentMethodForm : Form
 
         await _service.CreatePaymentMethodAsync(newPaymentMethod, _cts.Token);
         await LoadPaymentMethods();
-    }
-
-    private void SetupBindings()
-    {
-        this.paymentMethodNameTextBox.DataBindings.Add("Text", paymentMethodDtoBindingSource, "Name", true, DataSourceUpdateMode.Never);
     }
 
     private async void paymentMethodUpdateButton_Click(object sender, EventArgs e)
@@ -50,6 +56,21 @@ public partial class PaymentMethodForm : Form
 
         await _service.UpdatePaymentMethodAsync(Current.PaymentMethodId, Current, _cts.Token);
         await LoadPaymentMethods();
+    }
+
+    private async void paymentMethodDeleteButton_Click(object sender, EventArgs e)
+    {
+        DialogResult result = MessageBox.Show(
+            "Are you sure you want to delete this record?",
+            "Delete",
+            MessageBoxButtons.YesNo,
+            MessageBoxIcon.Warning);
+
+        if (result == DialogResult.Yes)
+        {
+            await _service.DeletePaymentMethodAsync(Current.PaymentMethodId, _cts.Token);
+            await LoadPaymentMethods();
+        }
     }
 
     protected override void Dispose(bool disposing)
@@ -71,26 +92,5 @@ public partial class PaymentMethodForm : Form
         }
 
         base.Dispose(disposing);
-    }
-
-    private async void paymentMethodDeleteButton_Click(object sender, EventArgs e)
-    {
-        DialogResult result = MessageBox.Show(
-            "Are you sure you want to delete this record?",
-            "Delete",
-            MessageBoxButtons.YesNo,
-            MessageBoxIcon.Warning);
-
-        if (result == DialogResult.Yes)
-        {
-            await _service.DeletePaymentMethodAsync(Current.PaymentMethodId, _cts.Token);
-            await LoadPaymentMethods();
-        }
-    }
-
-    private async Task LoadPaymentMethods()
-    {
-        List<PaymentMethodDto> paymentMethodDtos = await _service.GetAllPaymentMethodsAsync(_cts.Token);
-        paymentMethodDtoBindingSource.DataSource = paymentMethodDtos;
     }
 }

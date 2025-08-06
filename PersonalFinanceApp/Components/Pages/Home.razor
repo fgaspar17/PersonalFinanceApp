@@ -17,8 +17,6 @@
             <tr>
                 <td>@method.PaymentMethodId</td>
                 <td>@method.Name</td>
-                <td>@method.CreatedAt.ToString("yyyy-MM-dd")</td>
-                <td>@(method.UpdatedAt.HasValue ? method.UpdatedAt.Value.ToString("yyyy-MM-dd") : "N/A")</td>
                 <td><button id="@method.PaymentMethodId">Update</button> <button id="@method.PaymentMethodId">Delete</button></td>
             </tr>
         }

@@ -17,4 +17,10 @@
     <ProjectReference Include="..\PersonalFinanceApp.Services\PersonalFinanceApp.Services.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="personalfinance.db">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>
