@@ -1,4 +1,3 @@
-using System.Threading.Tasks;
 using PersonalFinanceApp.Services.DTOs;
 using PersonalFinanceApp.Services.Services;
 
@@ -77,9 +76,9 @@ public partial class PaymentMethodForm : Form
     private async void paymentMethodDeleteButton_Click(object sender, EventArgs e)
     {
         DialogResult result = MessageBox.Show(
-            "Are you sure you want to delete this record?", 
-            "Delete", 
-            MessageBoxButtons.YesNo, 
+            "Are you sure you want to delete this record?",
+            "Delete",
+            MessageBoxButtons.YesNo,
             MessageBoxIcon.Warning);
 
         if (result == DialogResult.Yes)
